@@ -4,6 +4,8 @@ import speech_recognition as sr
 import time
 import os
 
+from analyse import Analyze
+
 # used to interept process with keyboard
 def keyboardInterruptHandler(signal, frame):
     print("KeyboardInterrupt (ID: {}) has been caught. Cleaning up...".format(signal))
@@ -62,13 +64,10 @@ class Venom:
 if __name__ == '__main__':
 	print('****** Venom is up and running ******') 
 	init = Venom.initializer()
-	what_is_said = []
 	while True:
 		comm = Venom.communicate(init[0],init[1])
 		if comm :
-			what_is_said.append(comm)
-
-		print(what_is_said)
+			Analyze.anlyser(comm)
 
 
 
